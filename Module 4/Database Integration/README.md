@@ -1,21 +1,142 @@
-# Database Integration Assignment Starter
+<<<<<<< HEAD
+# Database Integration — Prisma + PostgreSQL
 
-Replace the in-memory repository implementation with PostgreSQL through Prisma. The starter already uses an asynchronous repository contract so services and controllers can remain stable during the swap.
+## Setup
+
+```bash
+npm install
+cp .env.example .env
+# Fill in your DATABASE_URL in .env
+```
+
+## Database
+
+```bash
+npx prisma migrate dev --name add_core_models
+npx prisma generate
+node prisma/seed.js   # optional seed data
+```
 
 ## Run
 
 ```bash
-npm install
-npm start
+npm start        # production
+npm run dev      # nodemon watch mode
 ```
 
-## Prisma preparation
+## API Endpoints
 
-Copy `.env.example` to `.env` with a local PostgreSQL URL. The schema is intentionally incomplete for the assignment.
+| Method | Path         | Description       |
+|--------|--------------|-------------------|
+| GET    | /users       | List all users    |
+| POST   | /users       | Create user       |
+| GET    | /users/:id   | Get user          |
+| PATCH  | /users/:id   | Update user       |
+| DELETE | /users/:id   | Delete user       |
+| GET    | /posts       | List all posts    |
+| POST   | /posts       | Create post       |
+| GET    | /posts/:id   | Get post          |
+| PATCH  | /posts/:id   | Update post       |
+| DELETE | /posts/:id   | Delete post       |
+| GET    | /votes       | List all votes    |
+| POST   | /votes       | Cast vote         |
+| DELETE | /votes/:id   | Remove vote       |
+
+## Reset
 
 ```bash
-npm run prisma:format
-npm run prisma:validate
+npm run reset   # drops and re-migrates (dev only)
+```
+=======
+# Backend Web Development — Assignments
+
+Welcome! This repository holds the **starter code** for the hands-on assignments in the
+**Backend Web Development** course. It is shared with **both students and mentors**.
+
+You will build real backend skills the way working engineers do: by writing code,
+pushing it to a branch, and opening a **Pull Request (PR)** for review.
+
+---
+
+## What this course is about
+
+Backend Web Development takes you from the fundamentals of the server side through to
+building structured, production-shaped Node.js and Express applications. Across the
+course you will work with the Node runtime, the file system and streams, HTTP and
+routing, modular Express apps, middleware pipelines, request validation, and more.
+
+Many lessons are anchored around **Threadbase**, a reference developer-community app, so
+the concepts you learn always connect to how a real backend is actually built.
+
+---
+
+## What is in this repo
+
+This repository contains the **starter code for one assignment**, at the root. Everything
+you need to begin is right here:
+
+```
+README.md        ← the full brief: what to do, how to run, how to submit
+package.json     ← dependencies and the "npm start" script
+...starter files with TODOs for you to complete
 ```
 
-Read the platform question before editing. Do not add platform-only `question.md`, answer files, tests, or specs to this repository. Never commit `.env` or real credentials.
+> Read `README.md` for the complete details, and only edit the files it tells you to.
+
+---
+
+## How PR-based assignments work
+
+These assignments are **Project Artifact Submissions**: you work in **your own**
+repository and submit a link to a Pull Request, and your **code** is reviewed against a
+rubric (an automated AI reviewer plus, where needed, a mentor).
+
+> **You do not push to this starter repo.** This repo is read-only reference material.
+> You copy the starter code into your own repository, do all your work there, and open the
+> PR inside *your* repo.
+
+The flow is the same every time:
+
+1. **Create your own repository** for the assignment (follow your cohort's instructions),
+   and copy this starter code into it. This starter repo stays untouched.
+2. **In your repo, create a branch** for your work, e.g. `git checkout -b lu16-streams`
+   (committing straight to `main` is fine too if that is what your cohort uses).
+3. **Install dependencies** inside the assignment folder: `npm install`.
+4. **Run it** to make sure it starts: `npm start`.
+5. **Implement the TODOs** described in the `README.md`.
+6. **Test locally** until the behaviour matches the brief's examples.
+7. **Commit and push** to your own repo:
+   ```bash
+   git add .
+   git commit -m "lu16: implement streams assignment"
+   git push origin lu16-streams
+   ```
+8. **Open a Pull Request in your own repository** (e.g. your branch into your `main`) and
+   **submit the PR link** on the platform.
+
+### What gets graded
+
+Only the **code in your PR** is evaluated against the assignment rubric — does the code
+do what the brief asks, correctly and cleanly. A clear PR title and description are good
+practice, but the **description itself is not part of the grade**.
+
+### Submission checklist
+
+- [ ] Working in **your own repo** (not this starter repo).
+- [ ] All TODOs implemented; no leftover `// TODO` placeholders.
+- [ ] `npm install` and `npm start` run without errors.
+- [ ] Behaviour matches the examples in the brief.
+- [ ] Only the files you were asked to change have changed.
+- [ ] Pushed to your repo and PR opened there; PR link submitted.
+
+---
+
+## Tips
+
+- **Do not commit `node_modules/`.** Run `npm install` locally instead.
+- Keep commits small and meaningful.
+- If something is unclear, re-read the `README.md` before asking — the examples usually
+  answer it.
+
+Happy building.
+>>>>>>> origin/main
