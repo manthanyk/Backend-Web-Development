@@ -1,32 +1,25 @@
 const postRepository = require('../repositories/postRepository');
 
-async function listPosts() {
+async function getAllPosts() {
   return postRepository.findAll();
 }
 
-async function getPost(id) {
+async function getPostById(id) {
   return postRepository.findById(id);
 }
 
 async function createPost(fields) {
-  if (!fields || !fields.title) {
-    const error = new Error('Title is required');
-    error.statusCode = 422;
-    throw error;
-  }
-  return postRepository.create({
-    title: fields.title,
-    body: fields.body || '',
-    authorId: fields.authorId,
-  });
+  if (!fields.title) throw new Error('title is required');
+  if (!fields.authorId) throw new Error('authorId is required');
+  return postRepository.create(fields);
 }
 
 async function updatePost(id, patch) {
   return postRepository.update(id, patch);
 }
 
-async function removePost(id) {
+async function deletePost(id) {
   return postRepository.remove(id);
 }
 
-module.exports = { listPosts, getPost, createPost, updatePost, removePost };
+module.exports = { getAllPosts, getPostById, createPost, updatePost, deletePost };
